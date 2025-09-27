@@ -12,3 +12,8 @@ results/
 # editors
 .vscode/
 .idea/
+
+# macOS
+.DS_Store
+src/.DS_Store
+src/cstar/.DS_Store
