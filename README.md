@@ -1,20 +1,12 @@
 C-STAR++ — Context-Aware Channel Allocation (Signal Scheduling)
-
-
-
-
-
-
 C-STAR++ is a lightweight, context-aware, multi-objective channel allocator for a single-cell downlink.
-It optimizes a composite of throughput, fairness, unmet-demand shortfall, tail-risk (CVaR), allocation entropy,
-and temporal stability — with ML-gated weights that adapt to context (e.g., demand/SE dispersion, mobility, anomalies/interference).
-The repo includes simple baselines (Uniform, Proportional/WRR-style) and a projected optimization core (capped simplex).
+It optimizes a composite of throughput, fairness, unmet-demand shortfall, tail-risk (CVaR), allocation entropy, and temporal stability — with ML-gated weights that adapt to context (e.g., demand/SE dispersion, mobility, anomalies/interference). The repo includes simple baselines (Uniform, Proportional/WRR-style) and a projected optimization core (capped simplex).
 
 ✨ Highlights
 
 Composite objective: throughput (T), fairness (F), unmet-demand (U), tail-risk CVaRα (R), entropy (H), stability (S)
 
-Context gate: κ → weights w on the simplex (guardrails + temperature calibration)
+Context gate: κ → weights w (simplex), with guardrails & temperature calibration
 
 Projected optimizer: Adam-like ascent + one-sided finite differences + capped-simplex projection
 
@@ -47,7 +39,7 @@ If some files are not yet committed, the runner still works with the included ba
 python3.11 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-pip install -e ".[dev]"                   # install package + dev extras
+pip install -e ".[dev]"
 python -m pip install -U pre-commit && pre-commit install
 
 Run the demo experiment
@@ -129,8 +121,3 @@ Open a PR against main
 🛡️ License
 
 MIT © 2025 NuruM12
-EOF
-
-git add README.md
-git commit -m "docs: add polished README (collapsible layout, quickstart, usage, CI notes)"
-git push
