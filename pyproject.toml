@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cstar"
+version = "0.1.0"
+description = "C-STAR++: adaptive multi-objective channel allocation with ML-gated optimization"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "Your Name" }]
+dependencies = [
+  "numpy",
+  "scipy",
+  "pandas",
+  "scikit-learn",
+  "matplotlib",
+  "pyyaml",
+  "typer>=0.9",
+  "rich",
+  "tqdm"
+]
+
+[project.optional-dependencies]
+plots = ["seaborn"]
+dev = ["pytest", "ruff", "black", "mypy", "pre-commit"]
+
+[project.scripts]
+cstar-run = "cstar.cli.run_scheduler:app"
+cstar-compare = "cstar.cli.compare:app"
+cstar-train-gate = "cstar.cli.train_gate:app"
+cstar-make-plots = "cstar.cli.make_plots:app"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E","F","I","B"]
